@@ -87,10 +87,102 @@ function renderGlutenFreeCrust() {
 
 function renderButtons() {
   // Iteration 3: add/remove the class "active" of each `<button class="btn">`
+
+  //pepperoni: true,
+  const pepBtnActive = state.pepperoni
+  const pepBtn = document.querySelector('.btn.btn-pepperoni')
+
+  if (pepBtnActive === true) {
+    pepBtn.classList.add('active');
+  } else {
+    pepBtn.classList.remove('active');
+  }
+
+  //mushrooms: true,
+  const mashBtnActive = state.mushrooms
+
+  if (mashBtnActive === true) {
+    document.querySelector('.btn.btn-mushrooms').classList.add('active');
+  } else {
+    document.querySelector('.btn.btn-mushrooms').classList.remove('active');
+  }
+
+  // greenPeppers: true,
+  const grPepBtnActive = state.greenPeppers
+  
+  if (grPepBtnActive === true) {
+    document.querySelector('.btn.btn-green-peppers').classList.add('active');
+  } else {
+    document.querySelector('.btn.btn-green-peppers').classList.remove('active');
+  }
+ 
+  // whiteSauce: false,
+  const whSauceBtnActive = state.whiteSauce
+  
+  if (whSauceBtnActive === true) {
+    document.querySelector('.btn.btn-sauce').classList.add('active');
+  } else {
+    document.querySelector('.btn.btn-sauce').classList.remove('active');
+  }
+
+  // glutenFreeCrust: false
+  const GlFrCrustBtnActive = state.glutenFreeCrust
+  
+  if (GlFrCrustBtnActive === true) {
+    document.querySelector('.btn.btn-crust').classList.add('active');
+  } else {
+    document.querySelector('.btn.btn-crust').classList.remove('active');
+  }
+
 }
 
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
+
+
+  // the state of the btn === 
+  //const pepBtnActive = state.pepperoni
+
+  // to clean the li when FALSE 
+  // document.querySelector('aside.panel.price ul li:nth-child(1)').style.display = 'none'
+
+
+  //peperony value === the price of pepperoni 
+  // const pepPrice = document.querySelector('aside.panel.price ul li:nth-child(1)').innerText[1]
+  // const pepPriceNum = Number(pepPrice);
+
+  //the total price of Strong 
+  //const subFinalPrice = document.querySelector('aside.panel.price strong').innerHTML[1]
+
+  // ===> finalPrice = subFinalPrice + pepPriceNum;
+if (state.pepperoni){
+  document.querySelector('aside.panel.price ul li:nth-child(1)').style.display = 'none'
+  const pepPrice = document.querySelector('aside.panel.price ul li:nth-child(1)').innerText[1]
+  const pepPriceNum = Number(pepPrice);
+  const subFinPr = document.querySelector('aside.panel.price strong').innerText;
+  const subFinalPr = subFinPr.slice(-2);
+  const finalPrice = Number(subFinalPr);
+  const finalFinalPrice = finalPrice + pepPriceNum;
+  document.querySelector('aside.panel.price strong').innerText = finalFinalPrice ;
+} else {
+  document.querySelector('aside.panel.price ul li:nth-child(1)').style.display = 'block';
+  const subFinPr = document.querySelector('aside.panel.price strong').innerText;
+  const subFinalPr = subFinPr.slice(-2);
+  const finalPrice = Number(subFinalPr);
+  //const subFinalPrice = document.querySelector('aside.panel.price strong').innerHTML[0];[1]
+  //const backPrice = Number(subFinalPrice);
+  const finalFinalPrice = finalPrice ;
+  document.querySelector('aside.panel.price strong').innerHTML = finalFinalPrice 
+}
+  // console.log(finalPrice) // ===> 22}
+
+  //finalPrice needs to be updated. 
+
+
+  //1 take the value of li 
+  //2 connect the value of li to a button === true 
+  //3 when clicked display === none
+  //4 update the price 
 }
 
 renderEverything();
