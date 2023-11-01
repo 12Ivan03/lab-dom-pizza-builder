@@ -44,18 +44,45 @@ function renderPepperoni() {
 
 function renderMushrooms() {
   // Iteration 1: set the visibility of `<section class="mushroom">`
+  document.querySelectorAll('.mushroom').forEach((allMash) => {
+    if(state.mushrooms) {
+      allMash.style.visibility = 'visible';
+    } else {
+      allMash.style.visibility = 'hidden';
+    }
+  });
+
 }
 
 function renderGreenPeppers() {
   // Iteration 1: set the visibility of `<section class="green-pepper">`
+  document.querySelectorAll('.green-pepper').forEach((grePep) => {
+    if(state.greenPeppers) {
+      grePep.style.visibility = 'visible';
+    } else {
+      grePep.style.visibility = 'hidden';
+    }
+  })
 }
 
 function renderWhiteSauce() {
   // Iteration 2: add/remove the class "sauce-white" of `<section class="sauce">`
+  const whiteSauceAddRem = document.querySelector('.sauce');
+  if (state.whiteSauce === false) {
+  whiteSauceAddRem.classList.remove('sauce-white');
+} else {
+  whiteSauceAddRem.classList.add('sauce-white');
+}
 }
 
 function renderGlutenFreeCrust() {
   // Iteration 2: add/remove the class "crust-gluten-free" of `<section class="crust">`
+  const crustGlutenFree = document.querySelector('.crust');
+  if (state.glutenFreeCrust === false) {
+    crustGlutenFree.classList.remove('crust-gluten-free');
+  } else {
+    crustGlutenFree.classList.add('crust-gluten-free');
+  }
 }
 
 function renderButtons() {
@@ -70,14 +97,43 @@ renderEverything();
 
 // Iteration 1: Example of a click event listener on `<button class="btn btn-pepperoni">`
 document.querySelector('.btn.btn-pepperoni').addEventListener('click', function () {
-  state.pepperoni = !state.pepperoni;
+  state.pepperoni = !state.pepperoni; 
+  // Very clear and clean code... a little bit wierd for me to express it this way. I'm not that advanced... ,yet! :P :D 
   renderEverything();
 });
 
 // Iteration 1: Add click event listener on `<button class="btn btn-mushrooms">`
+document.querySelector('.btn.btn-mushrooms').addEventListener('click', function() {
+  // state.mushrooms = !state.mushrooms; 
+  //trying different ways... experimenting... hahah O.O
+  if(state.mushrooms === true) {
+    state.mushrooms = false;
+  } else {
+    state.mushrooms = true;
+  };
+  renderEverything();
+});
 
 // Iteration 1: Add click event listener on `<button class="btn btn-green-peppers">`
+document.querySelector('.btn.btn-green-peppers').addEventListener('click' , function() {
+  // state.greenPeppers = !state.greenPeppers;
+  // renderEverything();
+  if (state.greenPeppers === true) {
+    state.greenPeppers = false;
+  } else if (state.greenPeppers === false) {
+    state.greenPeppers = true;   
+  };
+  renderEverything();
+});
 
 // Iteration 2: Add click event listener on `<button class="btn btn-sauce">`
+document.querySelector('.btn.btn-sauce').addEventListener('click', function() {
+  state.whiteSauce = !state.whiteSauce; // ! => the oposide of state.whiteSauce 
+  renderEverything();
+});
 
 // Iteration 2: Add click event listener on `<button class="btn btn-crust">`
+document.querySelector('.btn.btn-crust').addEventListener('click', function() {
+  state.glutenFreeCrust = !state.glutenFreeCrust // To be opposide of it's current state. 
+  renderEverything();
+});
