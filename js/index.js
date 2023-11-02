@@ -200,10 +200,6 @@ function renderPrice() {
   //   glutenFreeCrust: { name: 'Gluten-free crust', price: 5 }
   // };
 
-  //1 take the value of li  ==> ingredients /price
-  //2 connect the value of li to a button === true  state?
-  //3 when clicked display === none / 
-  //4 update the price === basePrice = 10$
 }
 
 renderEverything();
