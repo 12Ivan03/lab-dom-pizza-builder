@@ -139,50 +139,71 @@ function renderButtons() {
 function renderPrice() {
   // Iteration 4: change the HTML of `<aside class="panel price">`
 
+  // pepperoni: true,
+  // mushrooms: true,
+  // greenPeppers: true,
+  // whiteSauce: false,
+  // glutenFreeCrust: false
 
-  // the state of the btn === 
-  //const pepBtnActive = state.pepperoni
-
-  // to clean the li when FALSE 
-  // document.querySelector('aside.panel.price ul li:nth-child(1)').style.display = 'none'
-
-
-  //peperony value === the price of pepperoni 
-  // const pepPrice = document.querySelector('aside.panel.price ul li:nth-child(1)').innerText[1]
-  // const pepPriceNum = Number(pepPrice);
-
-  //the total price of Strong 
-  //const subFinalPrice = document.querySelector('aside.panel.price strong').innerHTML[1]
-
-  // ===> finalPrice = subFinalPrice + pepPriceNum;
-if (state.pepperoni){
-  document.querySelector('aside.panel.price ul li:nth-child(1)').style.display = 'none'
-  const pepPrice = document.querySelector('aside.panel.price ul li:nth-child(1)').innerText[1]
-  const pepPriceNum = Number(pepPrice);
-  const subFinPr = document.querySelector('aside.panel.price strong').innerText;
-  const subFinalPr = subFinPr.slice(-2);
-  const finalPrice = Number(subFinalPr);
-  const finalFinalPrice = finalPrice + pepPriceNum;
-  document.querySelector('aside.panel.price strong').innerText = finalFinalPrice ;
-} else {
-  document.querySelector('aside.panel.price ul li:nth-child(1)').style.display = 'block';
-  const subFinPr = document.querySelector('aside.panel.price strong').innerText;
-  const subFinalPr = subFinPr.slice(-2);
-  const finalPrice = Number(subFinalPr);
-  //const subFinalPrice = document.querySelector('aside.panel.price strong').innerHTML[0];[1]
-  //const backPrice = Number(subFinalPrice);
-  const finalFinalPrice = finalPrice ;
-  document.querySelector('aside.panel.price strong').innerHTML = finalFinalPrice 
-}
-  // console.log(finalPrice) // ===> 22}
-
-  //finalPrice needs to be updated. 
+  if(state.pepperoni) {
+    document.querySelector('aside.panel.price ul li:nth-child(1)').style.display = 'block';
+  } else {
+    document.querySelector('aside.panel.price ul li:nth-child(1)').style.display = 'none';
+  }
+  if(state.mushrooms) {
+    document.querySelector('aside.panel.price ul li:nth-child(2)').style.display = 'block';
+  } else {
+    document.querySelector('aside.panel.price ul li:nth-child(2)').style.display = 'none';
+  }
+  if(state.greenPeppers) {
+    document.querySelector('aside.panel.price ul li:nth-child(3)').style.display = 'block';
+  } else {
+    document.querySelector('aside.panel.price ul li:nth-child(3)').style.display = 'none';
+  }
+  if(state.whiteSauce === false) {
+    document.querySelector('aside.panel.price ul li:nth-child(4)').style.display = 'none';
+  } else {
+    document.querySelector('aside.panel.price ul li:nth-child(4)').style.display = 'block';
+  }
+  if(state.glutenFreeCrust === false ) {
+    document.querySelector('aside.panel.price ul li:nth-child(5)').style.display = 'none';
+  } else {
+    document.querySelector('aside.panel.price ul li:nth-child(5)').style.display = 'block';
+  }
+ 
 
 
-  //1 take the value of li 
-  //2 connect the value of li to a button === true 
-  //3 when clicked display === none
-  //4 update the price 
+  // const finalPrice = basePrice;
+  // for (let ing in ingredients) {
+  //   if(state[ing]) {
+  //     finalPrice += ingredients[ing].price
+  //   }
+  // }
+  // document.querySelector('aside.panel.price strong').textContent = `$${finalPrice}`
+  
+
+  let totalPrice = basePrice
+
+  for (let ingrePrice in ingredients) {
+    if (state[ingrePrice]) {
+      totalPrice += ingredients[ingrePrice].price
+    }
+  }
+  document.querySelector('aside.panel.price strong').innerHTML = `$${totalPrice}`
+
+
+  // const ingredients = {
+  //   pepperoni: { name: 'pepperoni', price: 1 },
+  //   mushrooms: { name: 'Mushrooms', price: 1 },
+  //   greenPeppers: { name: 'Green Peppers', price: 1 },
+  //   whiteSauce: { name: 'White sauce', price: 3 },
+  //   glutenFreeCrust: { name: 'Gluten-free crust', price: 5 }
+  // };
+
+  //1 take the value of li  ==> ingredients /price
+  //2 connect the value of li to a button === true  state?
+  //3 when clicked display === none / 
+  //4 update the price === basePrice = 10$
 }
 
 renderEverything();
